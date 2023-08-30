@@ -23,3 +23,18 @@ const opC = (cb) => {
     cb(null, 'C')
   }, 125)
 }
+
+const opAPromise = promisify(opA)
+const opBPromise = promisify(opB)
+const opCPromise = promisify(opC)
+
+opAPromise().then(resultA => {
+  print(null, resultA)
+  opBPromise().then(resultB => {
+    print(null, resultB)
+    opCPromise().then(resultC => {
+      print(null, resultC)
+    })
+  })
+})
+
