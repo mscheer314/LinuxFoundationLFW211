@@ -1,3 +1,6 @@
+// Register the listener function with the ee event emitter in such a way that the listener
+// function is only called a single time. If implemented correctly, the program should
+// printout passed!:
 'use strict'
 const assert = require('assert')
 const { EventEmitter } = require('events')
@@ -17,5 +20,9 @@ function listener () {
   }, 250)
 }
 
-
-
+ee.on("tick", function() {
+  if (count === 0) {
+    const boundListener = listener.bind(ee)
+    boundListener()
+  }
+});
