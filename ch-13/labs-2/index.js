@@ -51,7 +51,15 @@ function exercise (project) {
       // TODO - only set the answer variable if the filepath
       // is both newly created AND does not point to a directory
 
+      console.log(stat.birthtime)
+      console.log(stat.mtime)
+      console.log(stat.ctime)
+      console.log(stat.birthtime.toLocaleString() === stat.ctime.toLocaleString())
+      if (!stat.isDirectory() && stat.birthtime.toLocaleString() === stat.ctime.toLocaleString()) {
+        console.log('HWDFWEFWEFWEFWEFWEFWEF')
+        console.log('filepath: ', filepath)
       answer = filepath
+      }
     } catch (err) {
 
     }
